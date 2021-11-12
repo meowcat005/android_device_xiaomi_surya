@@ -14,6 +14,13 @@
 # limitations under the License.
 #
 
+# Broken rules
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_ENFORCE_SYSPROP_OWNER := true
+BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+
 BOARD_VENDOR := xiaomi
 
 DEVICE_PATH := device/xiaomi/surya
@@ -117,6 +124,7 @@ TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_USE_LATEST_CLANG := true
 TARGET_KERNEL_CONFIG := surya_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/surya
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # LMKD
 TARGET_LMKD_STATS_LOG := true
