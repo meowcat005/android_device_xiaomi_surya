@@ -26,4 +26,7 @@
 
     <!-- Margin on the left side of the carrier text on Keyguard -->
     <dimen name="keyguard_carrier_text_margin">44px</dimen>
+
+    <!-- The padding around the statusbar -->
+    <dimen name="rounded_corner_content_padding">16dp</dimen>
 </resources>
