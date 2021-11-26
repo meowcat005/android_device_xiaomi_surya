@@ -88,25 +88,29 @@ void vendor_load_properties() {
         model = "M2007J20CG";
         mod_device = "surya_global";
 	name = "surya_global";
-	fingerprint = "google/raven/raven:12/SD1A.210817.036/7805805:user/release-keys";
+	fingerprint = "POCO/surya_eea/surya:11/RKQ1.200826.002/V12.5.4.0.RJGMIXM:user/release-keys";
 	description = "surya_eea-user 11 RKQ1.200826.002 V12.5.4.0.RJGMIXM release-keys";
     } else if (hwname == "karna") {
 	device = "karna";
         model = "M2007J20CI";
         mod_device = "surya_in_global";
 	name = "karna_in";
-	fingerprint = "google/raven/raven:12/SD1A.210817.036/7805805:user/release-keys";
+	fingerprint = "POCO/surya_in/karna:11/RKQ1.200826.002/V12.5.4.0.RJGMIXM:user/release-keys";
 	description = "surya_in-user 11 RKQ1.200826.002 V12.5.4.0.RJGMIXM release-keys";
    }
 
-    set_ro_build_prop("fingerprint", fingerprint);
-    set_ro_product_prop("brand", "POCO");
-    set_ro_product_prop("device", device);
-    set_ro_product_prop("product", device);
-    set_ro_product_prop("model", model);
-    set_ro_product_prop("name", name);
-    property_override("ro.build.description", description.c_str());
-    if (mod_device != "") {
+   // SafetyNet workaround
+   fingerprint = "Xiaomi/dipper/dipper:8.1.0/OPM1.171019.011/V9.5.5.0.OEAMIFA:user/release-keys";
+   description = "dipper-user 8.1.0 OPM1.171019.011 V9.5.5.0.OEAMIFA release-keys";
+
+   set_ro_build_prop("fingerprint", fingerprint);
+   set_ro_product_prop("brand", "POCO");
+   set_ro_product_prop("device", device);
+   set_ro_product_prop("product", device);
+   set_ro_product_prop("model", model);
+   set_ro_product_prop("name", name);
+   property_override("ro.build.description", description.c_str());
+   if (mod_device != "") {
         property_override("ro.product.mod_device", mod_device.c_str());
-    }
+   }
 }
