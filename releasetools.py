@@ -53,7 +53,6 @@ def OTA_InstallEnd(info, input_zip):
   info.script.Print("Patching device-tree and verity images...")
   AddImage(info, input_zip, "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")
   AddImage(info, input_zip, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
-  AddImage(info, input_zip, "vbmeta_system.img", "/dev/block/bootdevice/by-name/vbmeta_system")
   info.script.Print("Patching firmware V12.5.4.0...")
 
   # Firmware
