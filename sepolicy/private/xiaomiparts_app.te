@@ -1,3 +1,7 @@
+type xiaomiparts_app, domain;
+
+app_domain(xiaomiparts_app)
+
 allow xiaomiparts_app {
     activity_service
     activity_task_service
