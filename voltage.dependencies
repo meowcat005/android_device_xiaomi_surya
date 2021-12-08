@@ -30,9 +30,9 @@
     "remote":"gitlab"
   },
    {
-    "repository":"crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r433403b",
-    "target_path":"prebuilts/clang/host/linux-x86/clang-r433403b",
-    "branch":"12",
-    "remote":"gitlab"
+    "repository":"ArrowOS-Devices/android_prebuilts_clang_host_linux-x86_clang-r437112",
+    "target_path":"prebuilts/clang/host/linux-x86/clang-r437112",
+    "branch":"master",
+    "remote":"github"
   }
 ]
