@@ -1,6 +1,5 @@
 /*
    Copyright (C) 2020 The LineageOS Project.
-
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -13,7 +12,6 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
-
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -32,6 +30,7 @@
 #include <android-base/properties.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
+#include <sys/sysinfo.h>
 
 using android::base::GetProperty;
 
@@ -73,6 +72,27 @@ void set_ro_product_prop(const std::string &prop, const std::string &value) {
     }
 };
 
+void load_dalvik_properties() {
+    struct sysinfo sys;
+
+    sysinfo(&sys);
+    if (sys.totalram < 7000ull * 1024 * 1024) {
+        // 6GB RAM
+        property_override("dalvik.vm.heapstartsize", "16m");
+        property_override("dalvik.vm.heaptargetutilization", "0.5");
+        property_override("dalvik.vm.heapmaxfree", "32m");
+    } else {
+        // 8GB RAM
+        property_override("dalvik.vm.heapstartsize", "24m");
+        property_override("dalvik.vm.heaptargetutilization", "0.46");
+        property_override("dalvik.vm.heapmaxfree", "48m");
+    }
+
+    property_override("dalvik.vm.heapgrowthlimit", "256m");
+    property_override("dalvik.vm.heapsize", "512m");
+    property_override("dalvik.vm.heapminfree", "8m");
+}
+
 void vendor_load_properties() {
     std::string hwname = GetProperty("ro.boot.hwname", "");
 
@@ -113,4 +133,6 @@ void vendor_load_properties() {
    if (mod_device != "") {
         property_override("ro.product.mod_device", mod_device.c_str());
    }
+
+    load_dalvik_properties();
 }
