@@ -58,7 +58,6 @@ PRODUCT_PACKAGES += \
     audio.bluetooth.default \
     audio.usb.default \
     audio.r_submix.default \
-    libldacBT_bco \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
