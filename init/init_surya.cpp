@@ -88,20 +88,12 @@ void vendor_load_properties() {
         model = "M2007J20CG";
         mod_device = "surya_global";
 	name = "surya_global";
-	fingerprint = "POCO/surya_eea/surya:11/RKQ1.200826.002/V12.5.4.0.RJGMIXM:user/release-keys";
-	description = "surya_eea-user 11 RKQ1.200826.002 V12.5.4.0.RJGMIXM release-keys";
     } else if (hwname == "karna") {
 	device = "karna";
         model = "M2007J20CI";
         mod_device = "surya_in_global";
 	name = "karna_in";
-	fingerprint = "POCO/surya_in/karna:11/RKQ1.200826.002/V12.5.4.0.RJGMIXM:user/release-keys";
-	description = "surya_in-user 11 RKQ1.200826.002 V12.5.4.0.RJGMIXM release-keys";
    }
-
-   // SafetyNet workaround
-   fingerprint = "Xiaomi/dipper/dipper:8.1.0/OPM1.171019.011/V9.5.5.0.OEAMIFA:user/release-keys";
-   description = "dipper-user 8.1.0 OPM1.171019.011 V9.5.5.0.OEAMIFA release-keys";
 
    set_ro_build_prop("fingerprint", fingerprint);
    set_ro_product_prop("brand", "POCO");
